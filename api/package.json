@@ -12,7 +12,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon api/index.js",
+    "server":"nodemon api/index.js",
+    "build":" npm i"
   },
   "author": "",
   "license": "ISC",
