@@ -1,10 +1,10 @@
 [build]
-  base = "client" # Points to the client directory
-  command = "npm run build" # Command to build the React app
-  publish = "client/build" # Directory with build artifacts
+  base = "client"
+  command = "npm run build" # Build command for the React app
+  publish = "client/build" # Correct path to the build output
 
 [build.environment]
-  REACT_APP_BASE_URL_BACKEND = "https://bogg-app.onrender.com" # Environment variable for backend URL
+  REACT_APP_BASE_URL_BACKEND = "https://bogg-app.onrender.com"
 
 [[redirects]]
   from = "/*"
