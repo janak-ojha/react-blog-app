@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const cors = require("cors"); // Import cors package
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
@@ -11,10 +12,16 @@ const path = require("path");
 const PORT = process.env.PORT || 5000;
 
 dotenv.config();
+
+// Configure CORS to allow requests from your frontend URL
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3000" // Replace with your frontend deployment URL
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Api is running Successfully");
+    res.send("API is running successfully");
 });
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
