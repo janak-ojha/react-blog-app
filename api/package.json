@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.2.3",
@@ -13,8 +14,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon api/index.js",
-    "server":"nodemon api/index.js",
-    "build":" npm i"
+    "server": "nodemon api/index.js",
+    "build": " npm i"
   },
   "author": "",
   "license": "ISC",
