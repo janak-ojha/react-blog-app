@@ -8,11 +8,20 @@ export default function Sidebar() {
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
-      setCats(res.data);
+      try {
+        const res = await axios.get("/categories");
+        if (Array.isArray(res.data)) {
+          setCats(res.data);
+        } else {
+          console.error("Expected an array but got:", res.data);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
     };
     getCats();
   }, []);
+
   return (
     <div className="sidebar">
       <div className="sidebarItem">
@@ -29,9 +38,9 @@ export default function Sidebar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-          {cats.map((c) => (
-            <Link to={`/?cat=${c.name}`} className="link">
-            <li className="sidebarListItem">{c.name}</li>
+          {Array.isArray(cats) && cats.map((c) => (
+            <Link key={c._id} to={`/?cat=${c.name}`} className="link">
+              <li className="sidebarListItem">{c.name}</li>
             </Link>
           ))}
         </ul>
