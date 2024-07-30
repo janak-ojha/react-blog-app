@@ -14,7 +14,7 @@ dotenv.config();
 
 // Use CORS middleware to allow requests from your frontend
 app.use(cors({
-    origin: process.env.REACT_APP_BASE_URL_BACKEND, // Replace with your frontend URL
+    origin: process.env.FRONTEND_URL, // Replace with your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
     credentials: true // Allow cookies or authentication headers
 }));
