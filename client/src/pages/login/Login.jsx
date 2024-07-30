@@ -2,11 +2,12 @@ import axios from "axios";
 import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
+import { useState } from "react";
 import "./login.css";
 
 export default function Login() {
-  const userRef = useRef();
-  const passwordRef = useRef();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const { dispatch, isFetching } = useContext(Context);
 
   const handleSubmit = async (e) => {
@@ -14,8 +15,8 @@ export default function Login() {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(`${process.env.REACT_APP_BASE_URL_BACKEND}/api/auth/login`, {
-        username: userRef.current.value,
-        password: passwordRef.current.value,
+        username,
+        password
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
@@ -32,14 +33,16 @@ export default function Login() {
           type="text"
           className="loginInput"
           placeholder="Enter your username..."
-          ref={userRef}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <label>Password</label>
         <input
           type="password"
           className="loginInput"
           placeholder="Enter your password..."
-          ref={passwordRef}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button className="loginButton" type="submit" disabled={isFetching}>
           Login
