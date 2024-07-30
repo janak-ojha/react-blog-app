@@ -1,7 +1,7 @@
 [build]
-  base = "frontend"
+  base = "client"
   command = "npm run build"
-  publish = "frontend/build"
+  publish = "client/build"
 
 [build.environment]
   REACT_APP_BASE_URL_BACKEND = "https://bogg-app.onrender.com"
