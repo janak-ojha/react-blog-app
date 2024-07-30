@@ -4,4 +4,4 @@
   publish = "client/build"
 
 [build.environment]
-  REACT_APP_BASE_URL_BACKEND = "https://bogg-app.onrender.com"
+REACT_APP_BASE_URL_BACKEND = "https://bogg-app.onrender.com"
