@@ -1,9 +1,16 @@
 {
   "name": "reactblogapp",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:client": "npm --prefix client start",
+    "build:client": "npm --prefix client run build",
+    "start:api": "npm --prefix api start",
+    "start": "concurrently \"npm run start:client\" \"npm run start:api\"",
+    "build": "npm run build:client"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0"
   },
   "author": "",
   "license": "ISC",
